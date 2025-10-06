@@ -6,6 +6,7 @@ import { DropZone } from "./DropZone";
 import { Confetti } from "./Confetti";
 import { GameData, gameDataSet } from "@/data/gameData";
 import { toast } from "sonner";
+import { playCorrectSound, playIncorrectSound } from "@/utils/sounds";
 
 export const MatchingGame = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,9 +30,7 @@ export const MatchingGame = () => {
       setShowConfetti(true);
       
       // Play success sound
-      const audio = new Audio();
-      audio.src = "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTcIF2i78+ifTQwOUKfk77RgGwU7k9j0ynksBSh+zO/eij0JEXG66OyvWhwMUp/k8LRgHAU3ldby0H0wBSN8y+7bkD4MGnC84OqsWRsLT6Lk77NfGgU4lNbx0X4xBCJ7yu7dlEELEm+54Oaoa";
-      audio.play().catch(() => {});
+      playCorrectSound();
       
       toast.success("Excellent! 🎉", {
         description: "Keep going!",
@@ -56,9 +55,7 @@ export const MatchingGame = () => {
       setIsCorrect(false);
       
       // Play error sound
-      const audio = new Audio();
-      audio.src = "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAgoSGiIqMjo6MioiFgn17eXd1c3FvcG9ubm1sbGxra2pqaWloZ2dmZWVkY2JiYWBfX15dXFxbWlpZWFdXVlVVVFRTU1JSUVFQUFBPTk5OTU1MTEtLSkpKSUhISEdHRkZFRUREQ0NDQkJBQUFAPz8+Pj09PDw7OzotLSwsKyoqKSkoKCcmJiUkJCMiIiEhICAfHx4eHR0cHBsbGhoZGRgYFxcWFhUVFBQTExISEhEREBAP";
-      audio.play().catch(() => {});
+      playIncorrectSound();
       
       toast.error("Oops! Try again! 🤔");
 
