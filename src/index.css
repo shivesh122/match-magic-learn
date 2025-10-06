@@ -125,33 +125,59 @@ All colors MUST be HSL.
 
 @layer utilities {
   .game-card {
-    @apply bg-[hsl(var(--game-card))] border-4 border-[hsl(var(--game-card-border))] rounded-3xl shadow-lg;
+    @apply bg-[hsl(var(--game-card))] border-4 border-[hsl(var(--game-card-border))] rounded-2xl sm:rounded-3xl shadow-lg transition-all duration-200;
   }
   
   .drop-zone {
-    @apply border-4 border-dashed border-muted rounded-2xl transition-all duration-300;
+    @apply border-[6px] border-dashed border-muted/60 rounded-3xl transition-all duration-300 relative;
+  }
+  
+  .drop-zone::before {
+    content: '👆 Drop Here';
+    @apply absolute inset-0 flex items-center justify-center text-muted-foreground/40 text-lg sm:text-xl font-bold pointer-events-none;
   }
   
   .drop-zone-active {
-    @apply border-primary scale-105;
+    @apply border-primary border-[8px] scale-[1.02] bg-primary/5;
+  }
+  
+  .drop-zone-active::before {
+    content: '✨ Release!';
+    @apply text-primary;
   }
   
   .drop-zone-correct {
-    @apply border-success bg-success/10 animate-bounce;
+    @apply border-success border-[8px] bg-success/10 animate-bounce;
+  }
+  
+  .drop-zone-correct::before {
+    content: '🎉 Perfect!';
+    @apply text-success;
   }
   
   .drop-zone-incorrect {
-    @apply border-destructive bg-destructive/10 animate-shake;
+    @apply border-destructive border-[8px] bg-destructive/10 animate-shake;
+  }
+  
+  .drop-zone-incorrect::before {
+    content: '😅 Try Again';
+    @apply text-destructive;
   }
   
   .draggable-item {
-    @apply cursor-grab active:cursor-grabbing transition-transform hover:scale-105;
+    @apply cursor-grab active:cursor-grabbing transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  @supports (-webkit-touch-callout: none) {
+    .draggable-item {
+      @apply select-none;
+    }
   }
   
   @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-10px) rotate(-2deg); }
+    75% { transform: translateX(10px) rotate(2deg); }
   }
   
   .animate-shake {
@@ -166,5 +192,10 @@ All colors MUST be HSL.
   
   .animate-bounce-in {
     animation: bounce-in 0.5s ease-out;
+  }
+  
+  /* Safe area for mobile devices */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
