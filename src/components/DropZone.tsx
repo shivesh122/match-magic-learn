@@ -40,7 +40,7 @@ export const DropZone = ({ targetId, children, onDrop, isCorrect, isEmpty }: Dro
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`drop-zone ${getDropZoneClass()} p-6 sm:p-8 w-full max-w-md mx-auto aspect-square flex items-center justify-center bg-card/50 backdrop-blur-sm`}
+      className={`drop-zone ${getDropZoneClass()} p-6 min-w-[200px] min-h-[200px] flex items-center justify-center bg-card/50`}
     >
       {children}
     </div>
