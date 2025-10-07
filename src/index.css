@@ -125,19 +125,19 @@ All colors MUST be HSL.
 
 @layer utilities {
   .game-card {
-    @apply bg-[hsl(var(--game-card))] border-4 border-[hsl(var(--game-card-border))] rounded-3xl shadow-lg;
+    @apply bg-[hsl(var(--game-card))] border-2 sm:border-4 border-[hsl(var(--game-card-border))] rounded-2xl sm:rounded-3xl shadow-lg transition-all duration-200;
   }
   
   .drop-zone {
-    @apply border-4 border-dashed border-muted rounded-2xl transition-all duration-300;
+    @apply border-2 sm:border-4 border-dashed border-muted rounded-xl sm:rounded-2xl transition-all duration-300;
   }
   
   .drop-zone-active {
-    @apply border-primary scale-105;
+    @apply border-primary scale-105 shadow-lg shadow-primary/20;
   }
   
   .drop-zone-correct {
-    @apply border-success bg-success/10 animate-bounce;
+    @apply border-success bg-success/10 animate-bounce shadow-lg shadow-success/20;
   }
   
   .drop-zone-incorrect {
@@ -145,13 +145,27 @@ All colors MUST be HSL.
   }
   
   .draggable-item {
-    @apply cursor-grab active:cursor-grabbing transition-transform hover:scale-105;
+    @apply cursor-grab active:cursor-grabbing transition-transform hover:scale-105 active:scale-95;
+  }
+  
+  .draggable-item[draggable="false"] {
+    @apply cursor-not-allowed opacity-50 hover:scale-100;
+  }
+  
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  
+  @supports ((-webkit-touch-callout: none) or (touch-action: none)) {
+    .draggable-item {
+      @apply touch-none select-none;
+    }
   }
   
   @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-8px) rotate(-3deg); }
+    75% { transform: translateX(8px) rotate(3deg); }
   }
   
   .animate-shake {
@@ -159,12 +173,20 @@ All colors MUST be HSL.
   }
   
   @keyframes bounce-in {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { 
+      transform: scale(0) rotate(-10deg);
+      opacity: 0;
+    }
+    50% { 
+      transform: scale(1.15) rotate(5deg);
+    }
+    100% { 
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
   }
   
   .animate-bounce-in {
-    animation: bounce-in 0.5s ease-out;
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }

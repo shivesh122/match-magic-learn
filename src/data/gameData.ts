@@ -86,3 +86,9 @@ export const gameDataSet: GameData[] = [
   ...hindiGames,
   ...numberGames,
 ];
+
+export const categorizedGames = {
+  english: englishGames,
+  hindi: hindiGames,
+  numbers: numberGames,
+};
