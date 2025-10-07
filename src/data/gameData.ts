@@ -3,277 +3,80 @@ export interface GameOption {
   content: string;
 }
 
-export interface GameData {
-  title: string;
-  target: string;
-  correctAnswer: string;
-  options: GameOption[];
-  letterOptions: GameOption[];
+export interface GamePair {
+  itemId: string;
+  itemContent: string;
+  letterId: string;
+  letterContent: string;
 }
 
-// English Letters (A-E)
+export interface GameData {
+  title: string;
+  pairs: GamePair[];
+}
+
+// English Letters (A-D)
 const englishGames: GameData[] = [
   {
     title: "Match Image with Letter",
-    target: "🍎",
-    correctAnswer: "letter-a",
-    options: [
-      { id: "img-apple", content: "🍎" },
-      { id: "img-dog", content: "🐕" },
-      { id: "img-cow", content: "🐄" },
-      { id: "img-ball", content: "🎾" },
-    ],
-    letterOptions: [
-      { id: "letter-b", content: "B" },
-      { id: "letter-c", content: "C" },
-      { id: "letter-d", content: "D" },
-      { id: "letter-a", content: "A" },
+    pairs: [
+      { itemId: "img-apple", itemContent: "🍎", letterId: "letter-a", letterContent: "A" },
+      { itemId: "img-bee", itemContent: "🐝", letterId: "letter-b", letterContent: "B" },
+      { itemId: "img-cat", itemContent: "🐱", letterId: "letter-c", letterContent: "C" },
+      { itemId: "img-dog", itemContent: "🐕", letterId: "letter-d", letterContent: "D" },
     ],
   },
   {
     title: "Match Image with Letter",
-    target: "🐝",
-    correctAnswer: "letter-b",
-    options: [
-      { id: "img-bee", content: "🐝" },
-      { id: "img-cat", content: "🐱" },
-      { id: "img-ant", content: "🐜" },
-      { id: "img-dog", content: "🐕" },
-    ],
-    letterOptions: [
-      { id: "letter-a", content: "A" },
-      { id: "letter-c", content: "C" },
-      { id: "letter-d", content: "D" },
-      { id: "letter-b", content: "B" },
-    ],
-  },
-  {
-    title: "Match Image with Letter",
-    target: "🐱",
-    correctAnswer: "letter-c",
-    options: [
-      { id: "img-cat", content: "🐱" },
-      { id: "img-bee", content: "🐝" },
-      { id: "img-apple", content: "🍎" },
-      { id: "img-dog", content: "🐕" },
-    ],
-    letterOptions: [
-      { id: "letter-a", content: "A" },
-      { id: "letter-b", content: "B" },
-      { id: "letter-d", content: "D" },
-      { id: "letter-c", content: "C" },
-    ],
-  },
-  {
-    title: "Match Image with Letter",
-    target: "🐕",
-    correctAnswer: "letter-d",
-    options: [
-      { id: "img-dog", content: "🐕" },
-      { id: "img-cat", content: "🐱" },
-      { id: "img-egg", content: "🥚" },
-      { id: "img-fish", content: "🐟" },
-    ],
-    letterOptions: [
-      { id: "letter-c", content: "C" },
-      { id: "letter-e", content: "E" },
-      { id: "letter-f", content: "F" },
-      { id: "letter-d", content: "D" },
-    ],
-  },
-  {
-    title: "Match Image with Letter",
-    target: "🥚",
-    correctAnswer: "letter-e",
-    options: [
-      { id: "img-egg", content: "🥚" },
-      { id: "img-dog", content: "🐕" },
-      { id: "img-fish", content: "🐟" },
-      { id: "img-grapes", content: "🍇" },
-    ],
-    letterOptions: [
-      { id: "letter-d", content: "D" },
-      { id: "letter-f", content: "F" },
-      { id: "letter-g", content: "G" },
-      { id: "letter-e", content: "E" },
+    pairs: [
+      { itemId: "img-egg", itemContent: "🥚", letterId: "letter-e", letterContent: "E" },
+      { itemId: "img-fish", itemContent: "🐟", letterId: "letter-f", letterContent: "F" },
+      { itemId: "img-grapes", itemContent: "🍇", letterId: "letter-g", letterContent: "G" },
+      { itemId: "img-hat", itemContent: "🎩", letterId: "letter-h", letterContent: "H" },
     ],
   },
 ];
 
-// Hindi Letters (अ-ई)
+// Hindi Letters
 const hindiGames: GameData[] = [
   {
     title: "हिंदी अक्षर से मिलान करें",
-    target: "🍎",
-    correctAnswer: "hindi-a",
-    options: [
-      { id: "img-apple", content: "🍎" },
-      { id: "img-mango", content: "🥭" },
-      { id: "img-ice", content: "🧊" },
-      { id: "img-elephant", content: "🐘" },
-    ],
-    letterOptions: [
-      { id: "hindi-aa", content: "आ" },
-      { id: "hindi-i", content: "इ" },
-      { id: "hindi-ee", content: "ई" },
-      { id: "hindi-a", content: "अ" },
+    pairs: [
+      { itemId: "img-apple-h", itemContent: "🍎", letterId: "hindi-a", letterContent: "अ" },
+      { itemId: "img-mango-h", itemContent: "🥭", letterId: "hindi-aa", letterContent: "आ" },
+      { itemId: "img-ice-h", itemContent: "🧊", letterId: "hindi-i", letterContent: "इ" },
+      { itemId: "img-bee-h", itemContent: "🐝", letterId: "hindi-ee", letterContent: "ई" },
     ],
   },
   {
     title: "हिंदी अक्षर से मिलान करें",
-    target: "🥭",
-    correctAnswer: "hindi-aa",
-    options: [
-      { id: "img-mango", content: "🥭" },
-      { id: "img-apple", content: "🍎" },
-      { id: "img-ice", content: "🧊" },
-      { id: "img-orange", content: "🍊" },
-    ],
-    letterOptions: [
-      { id: "hindi-a", content: "अ" },
-      { id: "hindi-i", content: "इ" },
-      { id: "hindi-u", content: "उ" },
-      { id: "hindi-aa", content: "आ" },
-    ],
-  },
-  {
-    title: "हिंदी अक्षर से मिलान करें",
-    target: "🧊",
-    correctAnswer: "hindi-i",
-    options: [
-      { id: "img-ice", content: "🧊" },
-      { id: "img-apple", content: "🍎" },
-      { id: "img-umbrella", content: "☂️" },
-      { id: "img-mango", content: "🥭" },
-    ],
-    letterOptions: [
-      { id: "hindi-a", content: "अ" },
-      { id: "hindi-aa", content: "आ" },
-      { id: "hindi-u", content: "उ" },
-      { id: "hindi-i", content: "इ" },
-    ],
-  },
-  {
-    title: "हिंदी अक्षर से मिलान करें",
-    target: "🐝",
-    correctAnswer: "hindi-ee",
-    options: [
-      { id: "img-bee", content: "🐝" },
-      { id: "img-ice", content: "🧊" },
-      { id: "img-umbrella", content: "☂️" },
-      { id: "img-apple", content: "🍎" },
-    ],
-    letterOptions: [
-      { id: "hindi-a", content: "अ" },
-      { id: "hindi-i", content: "इ" },
-      { id: "hindi-u", content: "उ" },
-      { id: "hindi-ee", content: "ई" },
-    ],
-  },
-  {
-    title: "हिंदी अक्षर से मिलान करें",
-    target: "☂️",
-    correctAnswer: "hindi-u",
-    options: [
-      { id: "img-umbrella", content: "☂️" },
-      { id: "img-ice", content: "🧊" },
-      { id: "img-bee", content: "🐝" },
-      { id: "img-mango", content: "🥭" },
-    ],
-    letterOptions: [
-      { id: "hindi-a", content: "अ" },
-      { id: "hindi-i", content: "इ" },
-      { id: "hindi-ee", content: "ई" },
-      { id: "hindi-u", content: "उ" },
+    pairs: [
+      { itemId: "img-umbrella-h", itemContent: "☂️", letterId: "hindi-u", letterContent: "उ" },
+      { itemId: "img-elephant-h", itemContent: "🐘", letterId: "hindi-oo", letterContent: "ऊ" },
+      { itemId: "img-orange-h", itemContent: "🍊", letterId: "hindi-e", letterContent: "ए" },
+      { itemId: "img-owl-h", itemContent: "🦉", letterId: "hindi-ai", letterContent: "ऐ" },
     ],
   },
 ];
 
-// Number Games (1-5)
+// Number Games
 const numberGames: GameData[] = [
   {
     title: "Match the Number",
-    target: "🍎",
-    correctAnswer: "num-1",
-    options: [
-      { id: "img-one-apple", content: "🍎" },
-      { id: "img-two-apples", content: "🍎🍎" },
-      { id: "img-three-apples", content: "🍎🍎🍎" },
-      { id: "img-four-apples", content: "🍎🍎🍎🍎" },
-    ],
-    letterOptions: [
-      { id: "num-2", content: "2" },
-      { id: "num-3", content: "3" },
-      { id: "num-4", content: "4" },
-      { id: "num-1", content: "1" },
+    pairs: [
+      { itemId: "img-one-apple", itemContent: "🍎", letterId: "num-1", letterContent: "1" },
+      { itemId: "img-two-stars", itemContent: "⭐⭐", letterId: "num-2", letterContent: "2" },
+      { itemId: "img-three-flowers", itemContent: "🌸🌸🌸", letterId: "num-3", letterContent: "3" },
+      { itemId: "img-four-balloons", itemContent: "🎈🎈🎈🎈", letterId: "num-4", letterContent: "4" },
     ],
   },
   {
     title: "Match the Number",
-    target: "⭐⭐",
-    correctAnswer: "num-2",
-    options: [
-      { id: "img-one-star", content: "⭐" },
-      { id: "img-two-stars", content: "⭐⭐" },
-      { id: "img-three-stars", content: "⭐⭐⭐" },
-      { id: "img-four-stars", content: "⭐⭐⭐⭐" },
-    ],
-    letterOptions: [
-      { id: "num-1", content: "1" },
-      { id: "num-3", content: "3" },
-      { id: "num-4", content: "4" },
-      { id: "num-2", content: "2" },
-    ],
-  },
-  {
-    title: "Match the Number",
-    target: "🌸🌸🌸",
-    correctAnswer: "num-3",
-    options: [
-      { id: "img-one-flower", content: "🌸" },
-      { id: "img-two-flowers", content: "🌸🌸" },
-      { id: "img-three-flowers", content: "🌸🌸🌸" },
-      { id: "img-four-flowers", content: "🌸🌸🌸🌸" },
-    ],
-    letterOptions: [
-      { id: "num-1", content: "1" },
-      { id: "num-2", content: "2" },
-      { id: "num-4", content: "4" },
-      { id: "num-3", content: "3" },
-    ],
-  },
-  {
-    title: "Match the Number",
-    target: "🎈🎈🎈🎈",
-    correctAnswer: "num-4",
-    options: [
-      { id: "img-one-balloon", content: "🎈" },
-      { id: "img-two-balloons", content: "🎈🎈" },
-      { id: "img-three-balloons", content: "🎈🎈🎈" },
-      { id: "img-four-balloons", content: "🎈🎈🎈🎈" },
-    ],
-    letterOptions: [
-      { id: "num-1", content: "1" },
-      { id: "num-2", content: "2" },
-      { id: "num-3", content: "3" },
-      { id: "num-4", content: "4" },
-    ],
-  },
-  {
-    title: "Match the Number",
-    target: "🦋🦋🦋🦋🦋",
-    correctAnswer: "num-5",
-    options: [
-      { id: "img-two-butterflies", content: "🦋🦋" },
-      { id: "img-three-butterflies", content: "🦋🦋🦋" },
-      { id: "img-four-butterflies", content: "🦋🦋🦋🦋" },
-      { id: "img-five-butterflies", content: "🦋🦋🦋🦋🦋" },
-    ],
-    letterOptions: [
-      { id: "num-2", content: "2" },
-      { id: "num-3", content: "3" },
-      { id: "num-4", content: "4" },
-      { id: "num-5", content: "5" },
+    pairs: [
+      { itemId: "img-five-butterflies", itemContent: "🦋🦋🦋🦋🦋", letterId: "num-5", letterContent: "5" },
+      { itemId: "img-six-hearts", itemContent: "❤️❤️❤️❤️❤️❤️", letterId: "num-6", letterContent: "6" },
+      { itemId: "img-seven-circles", itemContent: "🔵🔵🔵🔵🔵🔵🔵", letterId: "num-7", letterContent: "7" },
+      { itemId: "img-eight-suns", itemContent: "☀️☀️☀️☀️☀️☀️☀️☀️", letterId: "num-8", letterContent: "8" },
     ],
   },
 ];

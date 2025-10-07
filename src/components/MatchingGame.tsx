@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Home, Check, Coins } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DraggableItem } from "./DraggableItem";
@@ -8,59 +8,86 @@ import { GameData, gameDataSet } from "@/data/gameData";
 import { toast } from "sonner";
 import { playCorrectSound, playIncorrectSound } from "@/utils/sounds";
 
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export const MatchingGame = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  const [matchedPairs, setMatchedPairs] = useState<Set<string>>(new Set());
+  const [wrongDrops, setWrongDrops] = useState<Map<string, boolean>>(new Map());
 
   const currentGame: GameData = gameDataSet[currentIndex];
-  const allOptions = [...currentGame.options];
+  
+  const shuffledItems = useMemo(() => shuffleArray(currentGame.pairs), [currentIndex]);
+  const shuffledLetters = useMemo(() => shuffleArray([...currentGame.pairs]), [currentIndex]);
 
   const handleDragStart = (id: string) => {
     setDraggedItem(id);
   };
 
-  const handleDrop = (droppedId: string) => {
-    if (droppedId === currentGame.correctAnswer) {
-      // Correct answer
-      setIsCorrect(true);
-      setScore(score + 50);
-      setShowConfetti(true);
+  const handleDrop = (itemId: string, droppedLetterId: string) => {
+    // Find the correct letter for this item
+    const correctPair = currentGame.pairs.find(p => p.itemId === itemId);
+    
+    if (correctPair && droppedLetterId === correctPair.letterId) {
+      // Correct match
+      const newMatched = new Set(matchedPairs);
+      newMatched.add(itemId);
+      setMatchedPairs(newMatched);
+      setScore(score + 25);
       
-      // Play success sound
       playCorrectSound();
       
-      toast.success("Excellent! 🎉", {
-        description: "Keep going!",
+      toast.success("Perfect! 🎉", {
+        description: "Great match!",
       });
 
-      // Move to next after delay
-      setTimeout(() => {
-        setShowConfetti(false);
-        setIsCorrect(null);
-        if (currentIndex < gameDataSet.length - 1) {
-          setCurrentIndex(currentIndex + 1);
-        } else {
-          toast.success("🎊 You completed all levels!", {
-            description: `Final Score: ${score + 50}`,
-          });
-          setCurrentIndex(0);
-          setScore(0);
-        }
-      }, 2000);
+      // Check if all pairs are matched
+      if (newMatched.size === currentGame.pairs.length) {
+        setShowConfetti(true);
+        
+        setTimeout(() => {
+          setShowConfetti(false);
+          setMatchedPairs(new Set());
+          setWrongDrops(new Map());
+          
+          if (currentIndex < gameDataSet.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+            toast.success("Level Complete! 🎊", {
+              description: "Moving to next level!",
+            });
+          } else {
+            toast.success("🎊 You completed all levels!", {
+              description: `Final Score: ${score + 25}`,
+            });
+            setCurrentIndex(0);
+            setScore(0);
+          }
+        }, 2000);
+      }
     } else {
-      // Wrong answer
-      setIsCorrect(false);
-      
-      // Play error sound
+      // Wrong match
       playIncorrectSound();
+      
+      const newWrongDrops = new Map(wrongDrops);
+      newWrongDrops.set(itemId, true);
+      setWrongDrops(newWrongDrops);
       
       toast.error("Oops! Try again! 🤔");
 
       setTimeout(() => {
-        setIsCorrect(null);
+        const cleared = new Map(wrongDrops);
+        cleared.delete(itemId);
+        setWrongDrops(cleared);
       }, 1000);
     }
     setDraggedItem(null);
@@ -95,48 +122,44 @@ export const MatchingGame = () => {
 
       {/* Game Area */}
       <div className="max-w-6xl mx-auto">
-        {/* Target Item */}
-        <div className="flex justify-center mb-12">
-          <DropZone
-            targetId={currentGame.correctAnswer}
-            onDrop={handleDrop}
-            isCorrect={isCorrect}
-            isEmpty={draggedItem !== currentGame.correctAnswer}
-          >
-            <div className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center text-6xl md:text-8xl">
-              {currentGame.target}
-            </div>
-          </DropZone>
-        </div>
+        <p className="text-center text-muted-foreground mb-8 text-lg">
+          👇 Drag the letters to match with the correct items
+        </p>
 
-        {/* Draggable Options Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-          {allOptions.map((option) => (
-            <DraggableItem
-              key={option.id}
-              id={option.id}
-              onDragStart={handleDragStart}
-              disabled={isCorrect === true}
+        {/* Items Grid (Drop Zones) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          {shuffledItems.map((pair) => (
+            <DropZone
+              key={pair.itemId}
+              targetId={pair.itemId}
+              onDrop={(droppedId) => handleDrop(pair.itemId, droppedId)}
+              isCorrect={matchedPairs.has(pair.itemId) ? true : wrongDrops.get(pair.itemId) ? false : null}
+              isEmpty={!matchedPairs.has(pair.itemId)}
             >
-              <div className="game-card p-8 flex items-center justify-center min-h-[150px]">
-                <div className="text-5xl md:text-6xl">{option.content}</div>
+              <div className="flex flex-col items-center justify-center gap-3 min-h-[150px]">
+                <div className="text-6xl md:text-7xl">{pair.itemContent}</div>
+                {matchedPairs.has(pair.itemId) && (
+                  <div className="text-4xl md:text-5xl font-bold text-success animate-bounce-in">
+                    {pair.letterContent}
+                  </div>
+                )}
               </div>
-            </DraggableItem>
+            </DropZone>
           ))}
         </div>
 
-        {/* Letter Options Grid */}
+        {/* Draggable Letters Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {currentGame.letterOptions.map((option) => (
+          {shuffledLetters.map((pair) => (
             <DraggableItem
-              key={option.id}
-              id={option.id}
+              key={pair.letterId}
+              id={pair.letterId}
               onDragStart={handleDragStart}
-              disabled={isCorrect === true}
+              disabled={matchedPairs.has(pair.itemId)}
             >
               <div className="game-card p-8 flex items-center justify-center min-h-[120px] bg-gradient-to-br from-accent/30 to-accent/10">
                 <div className="text-6xl md:text-7xl font-bold text-foreground">
-                  {option.content}
+                  {pair.letterContent}
                 </div>
               </div>
             </DraggableItem>

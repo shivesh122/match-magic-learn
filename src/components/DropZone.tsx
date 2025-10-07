@@ -24,6 +24,9 @@ export const DropZone = ({ targetId, children, onDrop, isCorrect, isEmpty }: Dro
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
+    
+    if (!isEmpty) return; // Don't allow dropping if already matched
+    
     const droppedId = e.dataTransfer.getData("text/plain");
     onDrop(droppedId);
   };
