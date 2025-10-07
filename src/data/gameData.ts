@@ -15,7 +15,7 @@ export interface GameData {
   pairs: GamePair[];
 }
 
-// English Letters (A-D)
+// English Letters (A-Z)
 const englishGames: GameData[] = [
   {
     title: "Match Image with Letter",
@@ -35,9 +35,54 @@ const englishGames: GameData[] = [
       { itemId: "img-hat", itemContent: "🎩", letterId: "letter-h", letterContent: "H" },
     ],
   },
+  {
+    title: "Match Image with Letter",
+    pairs: [
+      { itemId: "img-ice", itemContent: "🧊", letterId: "letter-i", letterContent: "I" },
+      { itemId: "img-jar", itemContent: "🫙", letterId: "letter-j", letterContent: "J" },
+      { itemId: "img-kite", itemContent: "🪁", letterId: "letter-k", letterContent: "K" },
+      { itemId: "img-lion", itemContent: "🦁", letterId: "letter-l", letterContent: "L" },
+    ],
+  },
+  {
+    title: "Match Image with Letter",
+    pairs: [
+      { itemId: "img-monkey", itemContent: "🐵", letterId: "letter-m", letterContent: "M" },
+      { itemId: "img-nest", itemContent: "🪹", letterId: "letter-n", letterContent: "N" },
+      { itemId: "img-orange", itemContent: "🍊", letterId: "letter-o", letterContent: "O" },
+      { itemId: "img-pen", itemContent: "🖊️", letterId: "letter-p", letterContent: "P" },
+    ],
+  },
+  {
+    title: "Match Image with Letter",
+    pairs: [
+      { itemId: "img-queen", itemContent: "👸", letterId: "letter-q", letterContent: "Q" },
+      { itemId: "img-rainbow", itemContent: "🌈", letterId: "letter-r", letterContent: "R" },
+      { itemId: "img-sun", itemContent: "☀️", letterId: "letter-s", letterContent: "S" },
+      { itemId: "img-tree", itemContent: "🌳", letterId: "letter-t", letterContent: "T" },
+    ],
+  },
+  {
+    title: "Match Image with Letter",
+    pairs: [
+      { itemId: "img-umbrella", itemContent: "☂️", letterId: "letter-u", letterContent: "U" },
+      { itemId: "img-violin", itemContent: "🎻", letterId: "letter-v", letterContent: "V" },
+      { itemId: "img-watch", itemContent: "⌚", letterId: "letter-w", letterContent: "W" },
+      { itemId: "img-xray", itemContent: "🩻", letterId: "letter-x", letterContent: "X" },
+    ],
+  },
+  {
+    title: "Match Image with Letter",
+    pairs: [
+      { itemId: "img-yoyo", itemContent: "🪀", letterId: "letter-y", letterContent: "Y" },
+      { itemId: "img-zebra", itemContent: "🦓", letterId: "letter-z", letterContent: "Z" },
+      { itemId: "img-ant", itemContent: "🐜", letterId: "letter-a2", letterContent: "A" },
+      { itemId: "img-ball", itemContent: "⚽", letterId: "letter-b2", letterContent: "B" },
+    ],
+  },
 ];
 
-// Hindi Letters
+// Hindi Letters (Full Alphabet)
 const hindiGames: GameData[] = [
   {
     title: "हिंदी अक्षर से मिलान करें",
@@ -57,9 +102,81 @@ const hindiGames: GameData[] = [
       { itemId: "img-owl-h", itemContent: "🦉", letterId: "hindi-ai", letterContent: "ऐ" },
     ],
   },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-bird-h", itemContent: "🐦", letterId: "hindi-o", letterContent: "ओ" },
+      { itemId: "img-watermelon-h", itemContent: "🍉", letterId: "hindi-au", letterContent: "औ" },
+      { itemId: "img-carrot-h", itemContent: "🥕", letterId: "hindi-ka", letterContent: "क" },
+      { itemId: "img-butterfly-h", itemContent: "🦋", letterId: "hindi-kha", letterContent: "ख" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-grapes-h", itemContent: "🍇", letterId: "hindi-ga", letterContent: "ग" },
+      { itemId: "img-gift-h", itemContent: "🎁", letterId: "hindi-gha", letterContent: "घ" },
+      { itemId: "img-cherry-h", itemContent: "🍒", letterId: "hindi-cha", letterContent: "च" },
+      { itemId: "img-cookie-h", itemContent: "🍪", letterId: "hindi-chha", letterContent: "छ" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-cake-h", itemContent: "🍰", letterId: "hindi-ja", letterContent: "ज" },
+      { itemId: "img-pizza-h", itemContent: "🍕", letterId: "hindi-jha", letterContent: "झ" },
+      { itemId: "img-flower-h", itemContent: "🌸", letterId: "hindi-ta", letterContent: "ट" },
+      { itemId: "img-rose-h", itemContent: "🌹", letterId: "hindi-tha", letterContent: "ठ" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-drum-h", itemContent: "🥁", letterId: "hindi-da", letterContent: "ड" },
+      { itemId: "img-bell-h", itemContent: "🔔", letterId: "hindi-dha", letterContent: "ढ" },
+      { itemId: "img-tooth-h", itemContent: "🦷", letterId: "hindi-ta2", letterContent: "त" },
+      { itemId: "img-thread-h", itemContent: "🧵", letterId: "hindi-tha2", letterContent: "थ" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-door-h", itemContent: "🚪", letterId: "hindi-da2", letterContent: "द" },
+      { itemId: "img-smoke-h", itemContent: "💨", letterId: "hindi-dha2", letterContent: "ध" },
+      { itemId: "img-nose-h", itemContent: "👃", letterId: "hindi-na", letterContent: "न" },
+      { itemId: "img-boat-h", itemContent: "⛵", letterId: "hindi-pa", letterContent: "प" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-leaf-h", itemContent: "🍃", letterId: "hindi-pha", letterContent: "फ" },
+      { itemId: "img-banana-h", itemContent: "🍌", letterId: "hindi-ba", letterContent: "ब" },
+      { itemId: "img-cloud-h", itemContent: "☁️", letterId: "hindi-bha", letterContent: "भ" },
+      { itemId: "img-moon-h", itemContent: "🌙", letterId: "hindi-ma", letterContent: "म" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-monkey-h", itemContent: "🐵", letterId: "hindi-ya", letterContent: "य" },
+      { itemId: "img-robot-h", itemContent: "🤖", letterId: "hindi-ra", letterContent: "र" },
+      { itemId: "img-lamp-h", itemContent: "🪔", letterId: "hindi-la", letterContent: "ल" },
+      { itemId: "img-vine-h", itemContent: "🌿", letterId: "hindi-va", letterContent: "व" },
+    ],
+  },
+  {
+    title: "हिंदी अक्षर से मिलान करें",
+    pairs: [
+      { itemId: "img-snake-h", itemContent: "🐍", letterId: "hindi-sha", letterContent: "श" },
+      { itemId: "img-shell-h", itemContent: "🐚", letterId: "hindi-shha", letterContent: "ष" },
+      { itemId: "img-star-h", itemContent: "⭐", letterId: "hindi-sa", letterContent: "स" },
+      { itemId: "img-house-h", itemContent: "🏠", letterId: "hindi-ha", letterContent: "ह" },
+    ],
+  },
 ];
 
-// Number Games
+// Number Games (1-10)
 const numberGames: GameData[] = [
   {
     title: "Match the Number",
@@ -77,6 +194,15 @@ const numberGames: GameData[] = [
       { itemId: "img-six-hearts", itemContent: "❤️❤️❤️❤️❤️❤️", letterId: "num-6", letterContent: "6" },
       { itemId: "img-seven-circles", itemContent: "🔵🔵🔵🔵🔵🔵🔵", letterId: "num-7", letterContent: "7" },
       { itemId: "img-eight-suns", itemContent: "☀️☀️☀️☀️☀️☀️☀️☀️", letterId: "num-8", letterContent: "8" },
+    ],
+  },
+  {
+    title: "Match the Number",
+    pairs: [
+      { itemId: "img-nine-candies", itemContent: "🍬🍬🍬🍬🍬🍬🍬🍬🍬", letterId: "num-9", letterContent: "9" },
+      { itemId: "img-ten-cookies", itemContent: "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪", letterId: "num-10", letterContent: "10" },
+      { itemId: "img-one-car", itemContent: "🚗", letterId: "num-1b", letterContent: "1" },
+      { itemId: "img-two-boats", itemContent: "⛵⛵", letterId: "num-2b", letterContent: "2" },
     ],
   },
 ];
