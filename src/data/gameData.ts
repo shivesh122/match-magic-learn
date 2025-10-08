@@ -38,9 +38,9 @@ const englishGames: GameData[] = [
   {
     title: "Match Image with Letter",
     pairs: [
-      { itemId: "img-ice", itemContent: "🧊", letterId: "letter-i", letterContent: "I" },
-      { itemId: "img-jar", itemContent: "🫙", letterId: "letter-j", letterContent: "J" },
-      { itemId: "img-kite", itemContent: "🪁", letterId: "letter-k", letterContent: "K" },
+      { itemId: "img-ice", itemContent: "🍦", letterId: "letter-i", letterContent: "I" },
+      { itemId: "img-jar", itemContent: "🏺", letterId: "letter-j", letterContent: "J" },
+      { itemId: "img-kite", itemContent: "🎯", letterId: "letter-k", letterContent: "K" },
       { itemId: "img-lion", itemContent: "🦁", letterId: "letter-l", letterContent: "L" },
     ],
   },
@@ -48,7 +48,7 @@ const englishGames: GameData[] = [
     title: "Match Image with Letter",
     pairs: [
       { itemId: "img-monkey", itemContent: "🐵", letterId: "letter-m", letterContent: "M" },
-      { itemId: "img-nest", itemContent: "🪹", letterId: "letter-n", letterContent: "N" },
+      { itemId: "img-nest", itemContent: "🥜", letterId: "letter-n", letterContent: "N" },
       { itemId: "img-orange", itemContent: "🍊", letterId: "letter-o", letterContent: "O" },
       { itemId: "img-pen", itemContent: "🖊️", letterId: "letter-p", letterContent: "P" },
     ],
@@ -74,7 +74,7 @@ const englishGames: GameData[] = [
   {
     title: "Match Image with Letter",
     pairs: [
-      { itemId: "img-yoyo", itemContent: "🪀", letterId: "letter-y", letterContent: "Y" },
+      { itemId: "img-yoyo", itemContent: "💛", letterId: "letter-y", letterContent: "Y" },
       { itemId: "img-zebra", itemContent: "🦓", letterId: "letter-z", letterContent: "Z" },
       { itemId: "img-ant", itemContent: "🐜", letterId: "letter-a2", letterContent: "A" },
       { itemId: "img-ball", itemContent: "⚽", letterId: "letter-b2", letterContent: "B" },
@@ -89,7 +89,7 @@ const hindiGames: GameData[] = [
     pairs: [
       { itemId: "img-apple-h", itemContent: "🍎", letterId: "hindi-a", letterContent: "अ" },
       { itemId: "img-mango-h", itemContent: "🥭", letterId: "hindi-aa", letterContent: "आ" },
-      { itemId: "img-ice-h", itemContent: "🧊", letterId: "hindi-i", letterContent: "इ" },
+      { itemId: "img-ice-h", itemContent: "🍦", letterId: "hindi-i", letterContent: "इ" },
       { itemId: "img-bee-h", itemContent: "🐝", letterId: "hindi-ee", letterContent: "ई" },
     ],
   },
@@ -161,7 +161,7 @@ const hindiGames: GameData[] = [
     pairs: [
       { itemId: "img-monkey-h", itemContent: "🐵", letterId: "hindi-ya", letterContent: "य" },
       { itemId: "img-robot-h", itemContent: "🤖", letterId: "hindi-ra", letterContent: "र" },
-      { itemId: "img-lamp-h", itemContent: "🪔", letterId: "hindi-la", letterContent: "ल" },
+      { itemId: "img-lamp-h", itemContent: "💡", letterId: "hindi-la", letterContent: "ल" },
       { itemId: "img-vine-h", itemContent: "🌿", letterId: "hindi-va", letterContent: "व" },
     ],
   },
