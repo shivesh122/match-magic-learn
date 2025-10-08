@@ -182,10 +182,10 @@ export const MatchingGame = () => {
               isCorrect={matchedPairs.has(pair.itemId) ? true : wrongDrops.get(pair.itemId) ? false : null}
               isEmpty={!matchedPairs.has(pair.itemId)}
             >
-              <div className="flex flex-col items-center justify-center gap-2 min-h-[120px] sm:min-h-[140px] md:min-h-[150px] p-2">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">{pair.itemContent}</div>
+              <div className="flex flex-col items-center justify-center gap-2 min-h-[120px] sm:min-h-[140px] md:min-h-[150px] p-2 overflow-hidden">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl break-words text-center w-full">{pair.itemContent}</div>
                 {matchedPairs.has(pair.itemId) && (
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-success animate-bounce-in">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-success animate-bounce-in break-words text-center w-full">
                     {pair.letterContent}
                   </div>
                 )}
@@ -203,8 +203,8 @@ export const MatchingGame = () => {
               onDragStart={handleDragStart}
               disabled={matchedPairs.has(pair.itemId)}
             >
-              <div className="game-card p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-[100px] sm:min-h-[110px] md:min-h-[120px] bg-gradient-to-br from-accent/30 to-accent/10">
-                <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground">
+              <div className="game-card p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-[100px] sm:min-h-[110px] md:min-h-[120px] bg-gradient-to-br from-accent/30 to-accent/10 overflow-hidden">
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground break-words text-center w-full">
                   {pair.letterContent}
                 </div>
               </div>
