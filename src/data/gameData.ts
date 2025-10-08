@@ -68,7 +68,7 @@ const englishGames: GameData[] = [
       { itemId: "img-umbrella", itemContent: "☂️", letterId: "letter-u", letterContent: "U" },
       { itemId: "img-violin", itemContent: "🎻", letterId: "letter-v", letterContent: "V" },
       { itemId: "img-watch", itemContent: "⌚", letterId: "letter-w", letterContent: "W" },
-      { itemId: "img-xbox", itemContent: "❌", letterId: "letter-x", letterContent: "X" },
+      { itemId: "img-xylophone", itemContent: "🎹", letterId: "letter-x", letterContent: "X" },
     ],
   },
   {
